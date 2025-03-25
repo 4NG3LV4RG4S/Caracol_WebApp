@@ -3,7 +3,6 @@ import SectionTitle from "./section-title"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
-// Data de ejemplo para las noticias
 const latestNews = [
   {
     id: 1,

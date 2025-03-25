@@ -35,10 +35,10 @@ export default function Navbar() {
           <div className="flex items-center">
             <Link href="/" className="text-[#9c7a5b] font-bold flex items-center space-x-2 text-xl md:text-2xl">
               <Image
-                src="https://caracolillo.blob.core.windows.net/media-web-caracolillo/CaracolilloMediaImage/2024-10-09%2010%2045%2049.png"
-                alt="Logo Caracolillo"
-                width={95}
-                height={52} />
+                src="https://caracolillo.blob.core.windows.net/media-web-caracolillo/CaracolilloMediaImage/CaracolilloPNGLogo.png"
+                alt="Caracolillo"
+                width={100}
+                height={65} />
 
               Caracolillo
             </Link>

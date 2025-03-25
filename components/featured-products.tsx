@@ -3,13 +3,12 @@ import SectionTitle from "./section-title"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
-// Data de ejemplo para los productos
 const featuredProducts = [
   {
     id: "cafe-lavado",
-    name: "Café Lavado Premium",
+    name: "Café Lavado",
     description:
-      "Café de especialidad con proceso lavado, notas de chocolate y frutos rojos. Ideal para métodos de filtro.",
+      "Café de especialidad con proceso lavado, notas de chocolate y frutos rojos.",
     price: 220,
     imageUrl: "/placeholder.svg?height=500&width=500",
     category: "Café en grano",
@@ -18,7 +17,7 @@ const featuredProducts = [
   },
   {
     id: "cafe-honey",
-    name: "Café Honey Process",
+    name: "Café Honey Rojo",
     description:
       "Proceso honey que conserva parte del mucílago, logrando notas dulces de caramelo y frutas tropicales.",
     price: 250,
@@ -56,8 +55,8 @@ export default function FeaturedProducts() {
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <SectionTitle
-          title="Nuestros Productos Destacados"
-          subtitle="Descubre nuestra selección de productos más populares"
+          title="Café y Derivados"
+          subtitle="Descubre nuestros productos"
           centered={true}
         />
 
