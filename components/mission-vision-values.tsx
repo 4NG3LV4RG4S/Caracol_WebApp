@@ -63,6 +63,7 @@ export default function MissionVisionValues() {
             </div>
           </div>
         </div>
+        
       </div>
     </section>
   )
