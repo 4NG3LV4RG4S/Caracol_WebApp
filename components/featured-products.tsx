@@ -1,56 +1,47 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import ProductCard from "./product-card"
 import SectionTitle from "./section-title"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { IProxyService } from "../WebApi/Abstractions/IProxyService";
+import { ApiClient } from "../WebApi/Services/ProxyService";
 
-const featuredProducts = [
-  {
-    id: "cafe-lavado",
-    name: "Café Lavado",
-    description:
-      "Café de especialidad con proceso lavado, notas de chocolate y frutos rojos.",
-    price: 220,
-    imageUrl: "/placeholder.svg?height=500&width=500",
-    category: "Café en grano",
-    isNew: true,
-    isBestSeller: false,
-  },
-  {
-    id: "cafe-honey",
-    name: "Café Honey Rojo",
-    description:
-      "Proceso honey que conserva parte del mucílago, logrando notas dulces de caramelo y frutas tropicales.",
-    price: 250,
-    imageUrl: "/placeholder.svg?height=500&width=500",
-    category: "Café en grano",
-    isNew: false,
-    isBestSeller: true,
-  },
-  {
-    id: "licor-cafe",
-    name: "Licor de Café Artesanal",
-    description:
-      "Delicioso licor elaborado con nuestro café de especialidad. Perfecto para después de la cena o para regalar a amantes del café.",
-    price: 180,
-    imageUrl: "/placeholder.svg?height=500&width=500",
-    category: "Licores",
-    isNew: false,
-    isBestSeller: true,
-  },
-  {
-    id: "mermelada-cafe",
-    name: "Mermelada de Café",
-    description:
-      "Irresistible mermelada artesanal elaborada con nuestro café. Ideal para acompañar postres o para el desayuno.",
-    price: 120,
-    imageUrl: "/placeholder.svg?height=500&width=500",
-    category: "Derivados",
-    isNew: true,
-    isBestSeller: false,
-  },
-]
+const Proxy : IProxyService = new ApiClient("https://localhost:7250/");
+
+interface Product {
+  id: string
+  code: string
+  name: string
+  productDescription: string
+  productPresent: string
+  productPrice: number
+  imageUrl: string
+  categoryName: string
+  isNewProduct?: boolean
+  isBestSeller?: boolean
+}
 
 export default function FeaturedProducts() {
+  const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const products = await Proxy.get<Product[]>("/api/Product/GetTopSuggestedProducts");
+        setFeaturedProducts(products);
+      } catch (error) {
+        console.error("Error cargando productos:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+  
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">

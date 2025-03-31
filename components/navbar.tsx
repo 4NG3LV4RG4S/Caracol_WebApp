@@ -52,11 +52,17 @@ export default function Navbar() {
             <Link href="/productos" className="text-[#9c7a5b] hover:text-[#a8d5ba] transition-colors font-medium">
               Productos
             </Link>
+            <Link href="/brewBar" className="text-[#9c7a5b] hover:text-[#a8d5ba] transition-colors font-medium">
+              Cafetería
+            </Link>
             <Link href="/noticias" className="text-[#9c7a5b] hover:text-[#a8d5ba] transition-colors font-medium">
               Noticias
             </Link>
             <Link href="/nosotros" className="text-[#9c7a5b] hover:text-[#a8d5ba] transition-colors font-medium">
               Nosotros
+            </Link>
+            <Link href="/community" className="text-[#9c7a5b] hover:text-[#a8d5ba] transition-colors font-medium">
+              Comunidad
             </Link>
             <Link href="/contacto" className="text-[#9c7a5b] hover:text-[#a8d5ba] transition-colors font-medium">
               Contacto

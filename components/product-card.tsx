@@ -6,24 +6,26 @@ import { Badge } from "@/components/ui/badge"
 
 type ProductCardProps = {
   id: string
-  code : string
+  code: string
   name: string
-  description: string
-  price: number
+  productDescription: string
+  productPresent: string
+  productPrice: number
   imageUrl: string
-  category: string
-  isNew?: boolean
+  categoryName: string
+  isNewProduct?: boolean
   isBestSeller?: boolean
 }
 
 export default function ProductCard({
   id,
   name,
-  description,
-  price,
+  productDescription,
+  productPresent,
+  productPrice,
   imageUrl,
-  category,
-  isNew = false,
+  categoryName,
+  isNewProduct = false,
   isBestSeller = false,
 }: ProductCardProps) {
   return (
@@ -37,9 +39,9 @@ export default function ProductCard({
             className="object-cover transition-transform hover:scale-105 duration-500"
           />
         </div>
-        {(isNew || isBestSeller) && (
+        {(isNewProduct || isBestSeller) && (
           <div className="absolute top-2 left-2 flex flex-col gap-1">
-            {isNew && <Badge className="bg-[#a8d5ba] hover:bg-[#98c5aa] text-white border-none">Nuevo</Badge>}
+            {isNewProduct && <Badge className="bg-[#a8d5ba] hover:bg-[#98c5aa] text-white border-none">Nuevo</Badge>}
             {isBestSeller && (
               <Badge className="bg-[#9c7a5b] hover:bg-[#8c6a4b] text-white border-none">Más Vendido</Badge>
             )}
@@ -47,12 +49,13 @@ export default function ProductCard({
         )}
       </div>
       <CardHeader className="p-4 pb-0">
-        <div className="text-xs text-[#a8d5ba] font-medium uppercase mb-1">{category}</div>
+        <div className="text-xs text-[#a8d5ba] font-medium uppercase mb-1">{categoryName}</div>
         <CardTitle className="text-xl text-[#9c7a5b]">{name}</CardTitle>
-        <CardDescription className="text-lg font-bold text-[#9c7a5b]">${price.toFixed(2)}</CardDescription>
+        <p className="text-muted-foreground text-sm line-clamp-3">{productPresent}</p>
+        <CardDescription className="text-lg font-bold text-[#9c7a5b]">${productPrice.toFixed(2)}</CardDescription>
       </CardHeader>
       <CardContent className="p-4 pt-2 flex-grow">
-        <p className="text-muted-foreground text-sm line-clamp-3">{description}</p>
+        <p className="text-muted-foreground text-sm line-clamp-3">{productDescription}</p>
       </CardContent>
       <CardFooter className="p-4 pt-0">
         <div className="w-full flex gap-2">
