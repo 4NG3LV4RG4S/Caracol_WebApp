@@ -1,44 +1,54 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import ProductCard from "@/components/product-card"
 import SectionTitle from "@/components/section-title"
-import { IProxyService } from "@/WebApi/Abstractions/IProxyService";
-import { ApiClient } from "@/WebApi/Services/ProxyService";
-
-const Proxy : IProxyService = new ApiClient("https://localhost:7250/");
-
-interface Product {
-  id: string
-  code: string
-  name: string
-  productDescription: string
-  productPresent: string
-  productPrice: number
-  imageUrl: string
-  categoryName: string
-  isNewProduct?: boolean
-  isBestSeller?: boolean
-}
+import { useProducts } from "@/src/presentation/hooks/useProducts";
+import { LoadingSpinner } from "@/src/presentation/components/LoadingSpinner";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { AlertTriangle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function ProductosPage() {
-  const [allProducts, setFeaturedProducts] = useState<Product[]>([]);
-    const [loading, setLoading] = useState(true);
-  
-    useEffect(() => {
-      const fetchProducts = async () => {
-        try {
-          const products = await Proxy.get<Product[]>("/api/Product/GetAllProductsAsync");
-          setFeaturedProducts(products);
-        } catch (error) {
-          console.error("Error cargando productos:", error);
-        } finally {
-          setLoading(false);
-        }
-      };
-  
-      fetchProducts();
-    }, []);
+  const { products: allProducts, loading, error, refetch } = useProducts();
+
+  if (loading) {
+    return (
+      <div className="container mx-auto px-4 py-16 mt-16">
+        <SectionTitle
+          title="Nuestros Productos"
+          subtitle="Descubre nuestra selección de café y productos derivados"
+          centered={true}
+        />
+        <LoadingSpinner text="Cargando productos..." />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="container mx-auto px-4 py-16 mt-16">
+        <SectionTitle
+          title="Nuestros Productos"
+          subtitle="Descubre nuestra selección de café y productos derivados"
+          centered={true}
+        />
+        <Alert variant="destructive" className="max-w-md mx-auto">
+          <AlertTriangle className="h-4 w-4" />
+          <AlertDescription>
+            {error}
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={refetch}
+              className="ml-2"
+            >
+              Reintentar
+            </Button>
+          </AlertDescription>
+        </Alert>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto px-4 py-16 mt-16">
