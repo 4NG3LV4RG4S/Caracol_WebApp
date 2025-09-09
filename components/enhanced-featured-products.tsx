@@ -2,7 +2,7 @@
 
 import ProductCard from "./product-card"
 import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import LoadingLink from "@/components/ui/loading-link";
 import { Coffee, Sparkles, TrendingUp, Star } from "lucide-react"
 import { useFeaturedProducts } from "@/src/presentation/hooks/useProducts";
 import { LoadingSpinner } from "@/src/presentation/components/LoadingSpinner";
@@ -138,10 +138,10 @@ export default function EnhancedFeaturedProducts() {
                 size="lg"
                 className="bg-[#9c7a5b] hover:bg-[#8c6a4b] text-white px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <Link href="/productos">
+                <LoadingLink href="/productos">
                   <Coffee className="w-5 h-5 mr-2" />
                   Ver Todos
-                </Link>
+                </LoadingLink>
               </Button>
 
               <Button
@@ -150,10 +150,10 @@ export default function EnhancedFeaturedProducts() {
                 size="lg"
                 className="border-2 border-[#9c7a5b] text-[#9c7a5b] hover:bg-[#9c7a5b] hover:text-white px-8 py-6 text-lg rounded-xl bg-white/80 backdrop-blur-sm"
               >
-                <Link href="/brewBar">
+                <LoadingLink href="/brewBar">
                   <Sparkles className="w-5 h-5 mr-2" />
                   Probar en BrewBar
-                </Link>
+                </LoadingLink>
               </Button>
             </div>
           </div>

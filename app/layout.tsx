@@ -3,6 +3,8 @@ import "@/app/globals.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
+import { LoadingProvider } from "@/contexts/LoadingContext"
+import LoadingWrapper from "@/components/LoadingWrapper"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 
@@ -15,6 +17,17 @@ export const metadata: Metadata = {
     generator: 'v0.dev'
 }
 
+function LayoutContent({ children }: { children: React.ReactNode }) {
+  return (
+    <LoadingProvider>
+      <LoadingWrapper />
+      <Navbar />
+      <main className="flex-grow">{children}</main>
+      <Footer />
+    </LoadingProvider>
+  )
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -24,9 +37,7 @@ export default function RootLayout({
     <html lang="es">
       <body className={`${inter.className} min-h-screen bg-[#f7f3e9]`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          <Navbar />
-          <main className="flex-grow">{children}</main>
-          <Footer />
+          <LayoutContent>{children}</LayoutContent>
         </ThemeProvider>
       </body>
     </html>

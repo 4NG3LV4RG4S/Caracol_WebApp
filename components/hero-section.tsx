@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Coffee, Leaf, Heart, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import LoadingLink from "@/components/ui/loading-link";
 
 const CoffeeIllustration = () => (
   <svg
@@ -19,10 +19,10 @@ const CoffeeIllustration = () => (
       stroke="#8c6a4b"
       strokeWidth="2"
     />
-    
+
     {/* Coffee Surface */}
     <ellipse cx="150" cy="120" rx="70" ry="8" fill="#6b4423" />
-    
+
     {/* Steam */}
     <path
       d="M130 110 Q135 100 130 90 Q125 80 130 70"
@@ -48,7 +48,7 @@ const CoffeeIllustration = () => (
       strokeLinecap="round"
       opacity="0.7"
     />
-    
+
     {/* Handle */}
     <path
       d="M220 140 Q250 140 250 170 Q250 200 220 200"
@@ -56,17 +56,17 @@ const CoffeeIllustration = () => (
       strokeWidth="8"
       fill="none"
     />
-    
+
     {/* Coffee Beans */}
     <ellipse cx="280" cy="80" rx="8" ry="12" fill="#8c6a4b" transform="rotate(15 280 80)" />
     <path d="M280 74 Q280 80 280 86" stroke="#6b4423" strokeWidth="1" />
-    
+
     <ellipse cx="310" cy="100" rx="8" ry="12" fill="#8c6a4b" transform="rotate(-20 310 100)" />
     <path d="M310 94 Q310 100 310 106" stroke="#6b4423" strokeWidth="1" />
-    
+
     <ellipse cx="300" cy="130" rx="8" ry="12" fill="#8c6a4b" transform="rotate(45 300 130)" />
     <path d="M300 124 Q300 130 300 136" stroke="#6b4423" strokeWidth="1" />
-    
+
     {/* Saucer */}
     <ellipse cx="150" cy="240" rx="90" ry="12" fill="#a8d5ba" />
     <ellipse cx="150" cy="238" rx="90" ry="12" fill="#9bc5a8" />
@@ -87,7 +87,7 @@ const CoffeePlantIllustration = () => (
       strokeWidth="6"
       fill="none"
     />
-    
+
     {/* Leaves */}
     <path
       d="M140 100 Q120 90 110 110 Q120 130 140 120"
@@ -113,7 +113,7 @@ const CoffeePlantIllustration = () => (
       stroke="#8fbc8f"
       strokeWidth="1"
     />
-    
+
     {/* Coffee Cherries */}
     <circle cx="125" cy="140" r="8" fill="#dc143c" />
     <circle cx="175" cy="160" r="8" fill="#dc143c" />
@@ -124,7 +124,7 @@ const CoffeePlantIllustration = () => (
 
 export default function HeroSection() {
   const [currentFeature, setCurrentFeature] = useState(0)
-  
+
   const features = [
     {
       icon: Coffee,
@@ -147,7 +147,7 @@ export default function HeroSection() {
       description: "Reconocidos por nuestra excelencia"
     }
   ]
-const Icon = features[currentFeature].icon;
+  const Icon = features[currentFeature].icon;
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentFeature((prev) => (prev + 1) % features.length)
@@ -167,16 +167,16 @@ const Icon = features[currentFeature].icon;
 
       <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
-          
+
           {/* Left Content */}
           <div className="space-y-8">
-            <div className="space-y-6">              
+            <div className="space-y-6">
               <h1 className="text-5xl lg:text-7xl font-bold text-[#6b4423] leading-tight">
                 Café Caracolillo
               </h1>
-              
+
               <p className="text-xl text-[#8c6a4b] leading-relaxed max-w-lg">
-                Descubre la experiencia única de nuestro café de especialidad, 
+                Descubre la experiencia única de nuestro café de especialidad,
                 cultivado con pasión y preparado con maestría para despertar todos tus sentidos.
               </p>
             </div>
@@ -202,27 +202,27 @@ const Icon = features[currentFeature].icon;
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                asChild 
-                size="lg" 
+              <Button
+                asChild
+                size="lg"
                 className="bg-[#9c7a5b] hover:bg-[#8c6a4b] text-white px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <Link href="/productos">
+                <LoadingLink href="/productos">
                   <Coffee className="w-5 h-5 mr-2" />
                   Explorar Productos
-                </Link>
+                </LoadingLink>
               </Button>
-              
-              <Button 
-                asChild 
-                variant="outline" 
-                size="lg" 
+
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
                 className="border-2 border-[#9c7a5b] text-[#9c7a5b] hover:bg-[#9c7a5b] hover:text-white px-8 py-6 text-lg rounded-xl bg-white/80 backdrop-blur-sm"
               >
-                <Link href="/brewBar">
+                <LoadingLink href="/brewBar">
                   <Heart className="w-5 h-5 mr-2" />
                   Visitar BrewBar
-                </Link>
+                </LoadingLink>
               </Button>
             </div>
           </div>
@@ -230,7 +230,7 @@ const Icon = features[currentFeature].icon;
           {/* Right Illustrations */}
           <div className="relative">
             <div className="grid grid-cols-2 gap-8 h-[600px]">
-              
+
               {/* Main Coffee Cup */}
               <div className="col-span-2 relative">
                 <div className="absolute inset-0 bg-white/20 backdrop-blur-sm rounded-3xl border border-white/30" />
@@ -238,7 +238,7 @@ const Icon = features[currentFeature].icon;
                   <CoffeeIllustration />
                 </div>
               </div>
-              
+
               {/* Coffee Plant */}
               <div className="relative">
                 <div className="absolute inset-0 bg-white/20 backdrop-blur-sm rounded-3xl border border-white/30" />
@@ -246,7 +246,7 @@ const Icon = features[currentFeature].icon;
                   <CoffeePlantIllustration />
                 </div>
               </div>
-              
+
               {/* Stats Card */}
               <div className="relative">
                 <div className="absolute inset-0 bg-white/90 backdrop-blur-sm rounded-3xl border border-white/30 shadow-lg" />
@@ -267,13 +267,6 @@ const Icon = features[currentFeature].icon;
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-[#9c7a5b] rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-[#9c7a5b] rounded-full mt-2 animate-pulse" />
         </div>
       </div>
     </section>

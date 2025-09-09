@@ -2,7 +2,7 @@
 
 import { Coffee, Droplets, Thermometer, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import LoadingLink from "@/components/ui/loading-link";
 
 const BrewingMethodCard = ({ 
   icon: Icon, 
@@ -168,10 +168,10 @@ export default function CoffeeExperience() {
                 size="lg" 
                 className="bg-[#9c7a5b] hover:bg-[#8c6a4b] text-white px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <Link href="/brewBar">
+                <LoadingLink href="/brewBar">
                   <Coffee className="w-5 h-5 mr-2" />
                   Reservar Mesa
-                </Link>
+                </LoadingLink>
               </Button>
               
               <Button 
@@ -180,10 +180,10 @@ export default function CoffeeExperience() {
                 size="lg" 
                 className="border-2 border-[#9c7a5b] text-[#9c7a5b] hover:bg-[#9c7a5b] hover:text-white px-8 py-6 text-lg rounded-xl bg-white/80 backdrop-blur-sm"
               >
-                <Link href="/nosotros">
+                <LoadingLink href="/nosotros">
                   <Droplets className="w-5 h-5 mr-2" />
                   Nuestro Proceso
-                </Link>
+                </LoadingLink>
               </Button>
             </div>
           </div>

@@ -1,10 +1,10 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Link from "next/link"
 import { Menu, Coffee, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import LoadingLink from "@/components/ui/loading-link"
 import Image from "next/image"
 
 export default function Navbar() {
@@ -53,7 +53,7 @@ export default function Navbar() {
             
             {/* Logo */}
             <div className="flex items-center">
-              <Link 
+              <LoadingLink 
                 href="/" 
                 className="text-[#6b4423] font-bold flex items-center space-x-3 text-xl md:text-2xl group transition-all duration-300 hover:scale-105"
               >
@@ -70,13 +70,13 @@ export default function Navbar() {
                 <span className="bg-gradient-to-r from-[#6b4423] to-[#9c7a5b] bg-clip-text text-transparent font-extrabold">
                   Caracolillo
                 </span>
-              </Link>
+              </LoadingLink>
             </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-1">
               {navLinks.map((link) => (
-                <Link
+                <LoadingLink
                   key={link.href}
                   href={link.href}
                   className="relative px-4 py-2 text-[#6b4423] hover:text-[#9c7a5b] transition-all duration-300 font-medium group"
@@ -84,7 +84,7 @@ export default function Navbar() {
                   <span className="relative z-10">{link.label}</span>
                   <div className="absolute inset-0 bg-white/40 backdrop-blur-sm rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 scale-95 group-hover:scale-100" />
                   <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-[#9c7a5b] to-[#a8d5ba] transition-all duration-300 group-hover:w-3/4 transform -translate-x-1/2" />
-                </Link>
+                </LoadingLink>
               ))}
             </nav>
 
@@ -94,10 +94,10 @@ export default function Navbar() {
                 asChild
                 className="bg-gradient-to-r from-[#9c7a5b] to-[#8c6a4b] hover:from-[#8c6a4b] hover:to-[#7a5a3b] text-white px-6 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm border border-white/20"
               >
-                <Link href="/brewBar" className="flex items-center space-x-2">
+                <LoadingLink href="/brewBar" className="flex items-center space-x-2">
                   <Coffee className="w-4 h-4" />
                   <span>Reservar</span>
-                </Link>
+                </LoadingLink>
               </Button>
             </div>
 
@@ -134,7 +134,7 @@ export default function Navbar() {
                 {/* Mobile Navigation */}
                 <nav className="flex flex-col space-y-2">
                   {navLinks.map((link) => (
-                    <Link
+                    <LoadingLink
                       key={link.href}
                       href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
@@ -145,7 +145,7 @@ export default function Navbar() {
                         <Coffee className="w-4 h-4 opacity-60" />
                         <span>{link.label}</span>
                       </span>
-                    </Link>
+                    </LoadingLink>
                   ))}
                 </nav>
 
@@ -156,10 +156,10 @@ export default function Navbar() {
                     className="w-full bg-gradient-to-r from-[#9c7a5b] to-[#8c6a4b] hover:from-[#8c6a4b] hover:to-[#7a5a3b] text-white py-4 rounded-xl shadow-lg text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <Link href="/brewBar" className="flex items-center justify-center space-x-2">
+                    <LoadingLink href="/brewBar" className="flex items-center justify-center space-x-2">
                       <Coffee className="w-5 h-5" />
                       <span>Reservar Mesa</span>
-                    </Link>
+                    </LoadingLink>
                   </Button>
                 </div>
 
